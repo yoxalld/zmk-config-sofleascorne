@@ -9,6 +9,18 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
+    behaviors {
+        hm: hm {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HM";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "balanced";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -21,11 +33,11 @@
             //               | CTRL | ALT  | GUI | SPACE |  LOWER |        | RAISE | ENTER | GUI | ALT  | CTRL |
 
             bindings = <
-&none           &none  &none  &none         &none      &none                  &none  &none      &none          &none    &none     &none
-&kp ESC         &kp Q  &kp W  &kp E         &kp R      &kp T                  &kp Y  &kp U      &kp I          &kp O    &kp P     &kp BSPC
-&kp TAB         &kp A  &kp S  &kp D         &kp F      &kp G                  &kp H  &kp J      &kp K          &kp L    &kp SEMI  &kp SQT
-&kp LEFT_SHIFT  &kp Z  &kp X  &kp C         &kp V      &kp B  &none    &none  &kp N  &kp M      &kp COMMA      &kp DOT  &kp FSLH  &kp MINUS
-                       &none  &kp LEFT_GUI  &kp ENTER  &mo 1  &none    &none  &mo 2  &kp SPACE  &kp RIGHT_GUI  &none
+&none           &none        &none           &none           &none             &none                  &none  &none             &none            &none           &none           &none
+&kp ESC         &kp Q        &kp W           &kp E           &kp R             &kp T                  &kp Y  &kp U             &kp I            &kp O           &kp P           &kp BSPC
+&kp TAB         &hm LCTRL A  &hm LEFT_ALT S  &hm LEFT_GUI D  &hm LEFT_SHIFT F  &kp G                  &kp H  &hm LEFT_SHIFT J  &hm RIGHT_GUI K  &hm LEFT_ALT L  &hm LCTRL SEMI  &kp SQT
+&kp LEFT_SHIFT  &kp Z        &kp X           &kp C           &kp V             &kp B  &none    &none  &kp N  &kp M             &kp COMMA        &kp DOT         &kp FSLH        &kp MINUS
+                             &none           &kp LEFT_GUI    &kp ENTER         &mo 1  &none    &none  &mo 2  &kp SPACE         &kp RIGHT_GUI    &none
             >;
         };
 
